@@ -58,4 +58,14 @@ class JogosController extends Controller
             return redirect()->route('jogos-index')->with('error', 'Jogo não encontrado!');
         }
     }
+    public function destroy($id)
+    {
+        $jogo = Jogo::find($id);
+        if ($jogo) {
+            $jogo->delete($id);
+            return redirect()->route('jogos-index')->with('success', 'Jogo deletado com sucesso!');
+        } else {
+            return redirect()->route('jogos-index')->with('error', 'Jogo não encontrado!');
+        }
+    }
 }
